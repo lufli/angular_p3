@@ -1,0 +1,42 @@
+<div class="row" ng-controller="contactsCtrl">
+  <h3>Your Contacts</h3>
+  <div class="row" ng-show="contactShow">
+    <h3>{{name}}</h3>
+    <ul>
+      <li>Company: {{company}}</li>
+      <li>Email: {{email}}</li>
+    </ul>
+  </div>
+
+  <form ng-submit="addFormSubmit()" ng-show="addFormShow">
+    <input ng-model="name" type="text"/>
+    <input ng-model="company" type="text"/>
+    <input ng-model="email" type="text"/>
+    <button type='submit'>Add</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th width="200px">Name</th>
+        <th width="200px">Company</th>
+        <th width="25%">Email</th>
+        <th width="25%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="contact in contacts">
+        <td><a href="#">{{contact.name}}</a></td>
+        <td>{{contact.company}}</td>
+        <td>{{contact.email}}</td>
+        <td>
+          <button ng-click="showContact(contact)">Detail</button>
+          <button ng-click="showEditForm(contact)">Edit</button>
+          <button ng-click="removeContact(contact)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button ng-click="showAddForm()">+</button>
+  <button ng-click="hide()">-</button>
+  <button ng-click="hide()" ng-show="contactShow">-</button>
+</div>
